@@ -90,6 +90,231 @@ md"""
 ## 5.6 Matrix addition and substraction
 """
 
+# ╔═╡ b9681557-e56c-4c8d-96dc-569f0744272e
+md"""
+## 5.7 Scalar-matrix multi.
+"""
+
+# ╔═╡ c7ef3d6c-3e52-4470-9cdb-792a6b7c7db2
+md"""
+## 5.8 "Shifting" a matrix
+"""
+
+# ╔═╡ f2c1c08b-2c6d-4148-bf4a-d41ca8e5cadf
+# Code block 5.13/5.14
+let
+	l = .01
+	A = randn(4, 4)
+	As = A + l*I
+end
+
+# ╔═╡ f8c17dfc-4fc2-4042-9201-89ff4e53360b
+md"""
+## 5.9 Diagonal and trace
+"""
+
+# ╔═╡ 8ca8ad3f-fdc2-4c4b-b473-377e1e0400d3
+# Code block 5.15/5.16
+let
+	A = randn(4, 4)
+	t = tr(A)
+end
+
+# ╔═╡ 539b759d-3cc6-4b8b-9b29-c21360f0fb38
+md"""
+## 5.10 Exercises
+"""
+
+# ╔═╡ 0d03bfe1-5172-4514-8ede-1a134b5089a8
+# E.1
+let
+	u = [2, 4, 1]
+	v = [3, 5, 0, 2]
+	w = [1, 0, 1, 5]
+	A = [-1 -2 -6 -6
+	      1 -1  0 -2
+	     -1  0 -1 -4]
+	# a) Size mismatch
+	# b)
+	w * u' + A' == [ 1  5  0
+	                -2 -1  0
+	                -4  4  0
+	                 4 18  1]
+	# c)
+	u * v' - A == [ 7 12 6 10
+	               11 21 0 10
+	                4  5 1  6]
+	# d) Size mismatch
+	# e) Size mismatch
+end
+
+# ╔═╡ f4345eaa-4f74-433e-9afc-749f827748d0
+# E.2
+let
+	A = [2 4 3
+	     0 1 3]
+	B = [-2 -1 3
+	      6 -7 7]
+	C = [ 0 -6
+	     -3 -2
+	     -2  7]
+	D = [1 2
+	     3 4
+	     2 4]
+	# a)
+	A + 3B == [-4   1 12
+	           18 -20 24]
+	# b) Invalid
+	# c)
+	C - D == [-1 -8
+	          -6 -6
+	          -4  3]
+	# d)
+	D + C == [1 -4
+	          0  2
+	          0 11]
+	# e)
+	A' + D == [3 2
+	           7 5
+	           5 7]
+	# f)
+	(A + B)' + 2C == [ 0 -6
+	                  -3 -10
+	                   2  24]
+	# g)
+	3A + (B' + C)' == [4  8 10
+	                   0 -6 23]
+	# h) Invalid	
+end
+
+# ╔═╡ ad2105bc-c0bc-45fb-9c97-d953ce1e73f1
+# E.3
+# (N + 1)*N/2
+
+# ╔═╡ cc272c57-9b33-4900-a401-c1002849e02e
+# E.4
+# a) square, diagonal, symmetric
+# b) square, upper-triangular
+# c) square, symmetric
+# d) square, skew-symmetric if a = d = f = 0
+# e) square, skew-symmetric if e = f
+# f) rectangular, diagonal
+
+# ╔═╡ a3f7bd58-4ce9-483c-9826-ee3043d5f68f
+# E.5
+
+
+# ╔═╡ b57121e0-7547-442c-917b-db38601c217d
+# E.6
+let
+	m = [1  2  3  1  2  3
+ 		 2  3  1  2  3  1
+   	     3  1  2  3  1  2
+ 		 1  2  3  1  2  3
+ 		 2  3  1  2  3  1
+ 		 3  1  2  3  1  2]
+end
+
+# ╔═╡ 9e0c4c11-a1c2-4bd8-91d2-7ef2b91ad4c5
+# E.7
+# a) No, the third column does not have magnitude = 1.
+# b) No, because columns are not orthogonal.
+# c) Yes, all identities matrices are orthogonal.
+
+# ╔═╡ e8355101-e4c9-4702-91d5-3f784d1b6d72
+# E.8
+# Yes
+# a) -2
+# b) 21
+# c) a + j + b + k + c + l
+
+# ╔═╡ 04b935f5-4cb2-41c6-8c78-6348e4b2ca2e
+# E.9
+let
+	# a)
+	a1 = [3, -5, 1]
+	a2 = [-2, 1, 5]
+	tr(a1 * a2') == a1 ⋅ a2
+	# b)
+	b1 = [1, -3, 5, 2]
+	b2 = [5, 6, 1, 4]
+	tr(b1 * b2') == b1 ⋅ b2
+	# c)
+	# ae + bf + cg + dh
+end
+
+# ╔═╡ 136b21d5-6acc-4ccf-a882-84d9f0235ce3
+# E.10
+let
+	A = [5 -3
+	     2 -3]
+	B = [-4 -1
+	      1  3]
+	C = [:a :c
+	     :b :d]
+	λ = 5
+	α = -3
+	# a)
+	tr(A) == 2
+	# b)
+	tr(B) == -1
+	# c)
+	# tr(C) == a + b
+	# d)
+	# tr(λC) == 5a + 5b
+	# e)
+	# λtr(C) == 5a + 5b
+	# f)
+	# λtr(αC) == -18a - 18b
+	# g)
+	# αtr(λC) == -18a - 18b
+	# h)
+	tr(α*A + λ*B) == -11
+	# i)
+	(λ*α)tr(A + B) == -15
+	# j)
+	tr(λ*A + λ*B) == 5
+	# k)
+	λ*tr(A + B) == 5
+	# l)
+	tr(A + B') == 1	
+end
+
+# ╔═╡ 19cf66f1-bcab-4410-9009-6820e3b2f7a8
+md"""
+## 5.12 Code challenge
+"""
+
+# ╔═╡ cc7f3e30-4fc5-4ba3-9ea8-1d68a813ed82
+# C.1, Code block 5.17/5.18
+let
+	A = randn(4, 2)
+	B = randn(4, 2)
+	C = zeros(2, 2)
+	for coli in 1:2
+		for colj in 1:2
+			C[coli, colj] = A[:, coli] ⋅ B[:, colj]
+		end
+	end
+end
+
+# ╔═╡ de47a90e-a013-468f-ab2d-8192b4505d41
+# C.2, Code block 5.19/5.20
+let
+	A = randn(4, 4)
+	Al = tril(A)
+	S = Al + Al'
+end
+
+# ╔═╡ 4be39f19-da1f-4e21-823d-b33dba738500
+# C.3, Code block 5.21/5.22
+let
+	D = zeros(4, 8)
+	for d = 1:min(size(D)...)
+		D[d, d] = d + 1
+	end
+end
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -104,7 +329,7 @@ ToeplitzMatrices = "~0.8.2"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.10.0-rc3"
+julia_version = "1.10.0"
 manifest_format = "2.0"
 project_hash = "5d51cef3dd3668cc95b7e94fef6ab1720986ca38"
 
@@ -513,5 +738,25 @@ version = "17.4.0+2"
 # ╠═10bad1f5-7b4e-484b-b94f-913445d3b5ac
 # ╠═c4ca57d3-0814-4e8a-9a14-5592785af9a7
 # ╟─f9160937-d48e-430f-bcf7-bda03f13a7ee
+# ╟─b9681557-e56c-4c8d-96dc-569f0744272e
+# ╟─c7ef3d6c-3e52-4470-9cdb-792a6b7c7db2
+# ╠═f2c1c08b-2c6d-4148-bf4a-d41ca8e5cadf
+# ╟─f8c17dfc-4fc2-4042-9201-89ff4e53360b
+# ╠═8ca8ad3f-fdc2-4c4b-b473-377e1e0400d3
+# ╟─539b759d-3cc6-4b8b-9b29-c21360f0fb38
+# ╠═0d03bfe1-5172-4514-8ede-1a134b5089a8
+# ╠═f4345eaa-4f74-433e-9afc-749f827748d0
+# ╠═ad2105bc-c0bc-45fb-9c97-d953ce1e73f1
+# ╠═cc272c57-9b33-4900-a401-c1002849e02e
+# ╠═a3f7bd58-4ce9-483c-9826-ee3043d5f68f
+# ╠═b57121e0-7547-442c-917b-db38601c217d
+# ╠═9e0c4c11-a1c2-4bd8-91d2-7ef2b91ad4c5
+# ╠═e8355101-e4c9-4702-91d5-3f784d1b6d72
+# ╠═04b935f5-4cb2-41c6-8c78-6348e4b2ca2e
+# ╠═136b21d5-6acc-4ccf-a882-84d9f0235ce3
+# ╟─19cf66f1-bcab-4410-9009-6820e3b2f7a8
+# ╠═cc7f3e30-4fc5-4ba3-9ea8-1d68a813ed82
+# ╠═de47a90e-a013-468f-ab2d-8192b4505d41
+# ╠═4be39f19-da1f-4e21-823d-b33dba738500
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
